@@ -41,7 +41,7 @@ package-lock.json
 yarn.lock
 
 # Env
-env.js
+.env
 
 # BUCK
 buck-out/
