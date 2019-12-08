@@ -15,7 +15,7 @@ const HomeScreen = props => {
     return (
         <View>
             <SimpleLineIcon name="drop" size={30}/>
-            <Text style={{color: 'black', fontFamily: 'Ubuntu-Light'}}>{weather}</Text>
+            <Text style={{color: 'black', fontFamily: 'Ubuntu-Regular'}}>{weather}</Text>
 
             <Button
                 title="Go to Auth"

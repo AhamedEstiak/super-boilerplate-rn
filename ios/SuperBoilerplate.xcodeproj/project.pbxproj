@@ -14,6 +14,10 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		14321128D186B93F71D740E0 /* libPods-SuperBoilerplateTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 50BDCC606B9B0150A0279442 /* libPods-SuperBoilerplateTests.a */; };
 		15BEC50B804F0BE5850DA92E /* libPods-SuperBoilerplate.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 792BAF1EDE51EF2937EFA5B5 /* libPods-SuperBoilerplate.a */; };
+		1ADA80C1239D540F0084C3C6 /* Ubuntu-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADA80BD239D540F0084C3C6 /* Ubuntu-Bold.ttf */; };
+		1ADA80C2239D540F0084C3C6 /* Ubuntu-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADA80BE239D540F0084C3C6 /* Ubuntu-Light.ttf */; };
+		1ADA80C3239D540F0084C3C6 /* Ubuntu-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADA80BF239D540F0084C3C6 /* Ubuntu-Regular.ttf */; };
+		1ADA80C4239D540F0084C3C6 /* Ubuntu-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1ADA80C0239D540F0084C3C6 /* Ubuntu-Medium.ttf */; };
 		1C86CDBBC9A72401D1B82929 /* libPods-SuperBoilerplate-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4C191944982CF08FF2CD71C6 /* libPods-SuperBoilerplate-tvOS.a */; };
 		2D02E4BC1E0B4A80006451C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		2D02E4BD1E0B4A84006451C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
@@ -52,6 +56,10 @@
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SuperBoilerplate/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SuperBoilerplate/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SuperBoilerplate/main.m; sourceTree = "<group>"; };
+		1ADA80BD239D540F0084C3C6 /* Ubuntu-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Bold.ttf"; path = "../../assets/fonts/Ubuntu-Bold.ttf"; sourceTree = "<group>"; };
+		1ADA80BE239D540F0084C3C6 /* Ubuntu-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Light.ttf"; path = "../../assets/fonts/Ubuntu-Light.ttf"; sourceTree = "<group>"; };
+		1ADA80BF239D540F0084C3C6 /* Ubuntu-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Regular.ttf"; path = "../../assets/fonts/Ubuntu-Regular.ttf"; sourceTree = "<group>"; };
+		1ADA80C0239D540F0084C3C6 /* Ubuntu-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Ubuntu-Medium.ttf"; path = "../../assets/fonts/Ubuntu-Medium.ttf"; sourceTree = "<group>"; };
 		2D02E47B1E0B4A5D006451C7 /* SuperBoilerplate-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SuperBoilerplate-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* SuperBoilerplate-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "SuperBoilerplate-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FB335487D50A635645E225F /* Pods-SuperBoilerplate-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SuperBoilerplate-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SuperBoilerplate-tvOSTests/Pods-SuperBoilerplate-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -136,6 +144,17 @@
 			name = SuperBoilerplate;
 			sourceTree = "<group>";
 		};
+		1ADA80BC239D539C0084C3C6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1ADA80BD239D540F0084C3C6 /* Ubuntu-Bold.ttf */,
+				1ADA80BE239D540F0084C3C6 /* Ubuntu-Light.ttf */,
+				1ADA80C0239D540F0084C3C6 /* Ubuntu-Medium.ttf */,
+				1ADA80BF239D540F0084C3C6 /* Ubuntu-Regular.ttf */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		2D16E6871FA4F8E400B85C8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -161,7 +180,6 @@
 				12EF97C6F828ACCC16D2F016 /* Pods-SuperBoilerplateTests.debug.xcconfig */,
 				A893D6BDDD66AA0B6C1F1940 /* Pods-SuperBoilerplateTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -175,6 +193,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				1ADA80BC239D539C0084C3C6 /* Resources */,
 				13B07FAE1A68108700A75B9A /* SuperBoilerplate */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* SuperBoilerplateTests */,
@@ -309,6 +328,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -337,8 +357,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1ADA80C2239D540F0084C3C6 /* Ubuntu-Light.ttf in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				1ADA80C4239D540F0084C3C6 /* Ubuntu-Medium.ttf in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
+				1ADA80C3239D540F0084C3C6 /* Ubuntu-Regular.ttf in Resources */,
+				1ADA80C1239D540F0084C3C6 /* Ubuntu-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
