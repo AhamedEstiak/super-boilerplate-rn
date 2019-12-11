@@ -7,6 +7,9 @@ module.exports = {
         'jasmine': true,
     },
     'extends': ['eslint:recommended', "plugin:react/recommended"],
+    "plugins": [
+        "react-hooks"
+    ],
     "parser": "babel-eslint",
     'parserOptions': {
         "sourceType": "module"
@@ -30,5 +33,7 @@ module.exports = {
             'error',
             'always',
         ],
+        "react-hooks/rules-of-hooks": "error", // Checks rules of Hooks
+        "react-hooks/exhaustive-deps": "warn" // Checks effect dependencies
     },
 };
