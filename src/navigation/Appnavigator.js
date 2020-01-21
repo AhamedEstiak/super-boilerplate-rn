@@ -1,6 +1,7 @@
-import {Platform, View, Text, SafeAreaView } from 'react-native';
+import {Platform, View, Text } from 'react-native';
 import { createAppContainer, createSwitchNavigator } from 'react-navigation';
 import { createDrawerNavigator, DrawerItems } from 'react-navigation-drawer';
+import { SafeAreaView } from 'react-native-safe-area-context';
 import { createStackNavigator } from 'react-navigation-stack';
 import HomeScreen from '../screens/HomeScreen';
 import AuthScreen from '../screens/AuthScreen';
