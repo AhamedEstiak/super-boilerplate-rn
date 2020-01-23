@@ -1,8 +1,11 @@
 import React, {useEffect, useLayoutEffect} from 'react';
 import {useSelector, useDispatch, connect} from 'react-redux';
-import {View, Text, Button, Animated, StyleSheet} from 'react-native';
+import {View, Text, Button, Animated, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 import Config from 'react-native-config';
 import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+import { HeaderButtons, Item} from 'react-navigation-header-buttons';
+import HeaderButton from '../components/HeaderButton';
 import {loadWeather} from '../store/actions/weatherActions';
 import TestAnimation from '../components/TestAnimation';
 
@@ -41,8 +44,20 @@ const HomeScreen = props => {
     );
 };
 
-HomeScreen.navigationOptions = {
-    title: 'Home',
+
+HomeScreen.navigationOptions = navData => {
+    return {
+        title: 'Home',
+        headerLeft: (
+            <HeaderButtons HeaderButtonComponent={HeaderButton}>
+                <Item
+                    title="Menu"
+                    iconName={Platform.OS === 'android' ? 'md-menu' : 'ios-menu'}
+                    onPress={() => navData.navigation.toggleDrawer()}
+                />
+            </HeaderButtons>
+        ),
+    };
 };
 
 const styles = StyleSheet.create({
@@ -55,6 +70,12 @@ const styles = StyleSheet.create({
         height: 200,
         width: 227,
     },
+    trigger: {
+        marginLeft: 27.5,
+        borderRadius: 30,
+        width: 60,
+        height: 60,
+    }
 });
 
 const mapStateToProps = (state) => {

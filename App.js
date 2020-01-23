@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import 'react-native-gesture-handler';
 import {screensEnabled} from 'react-native-screens';
 import {Provider} from 'react-redux';
 import SplashScreen from 'react-native-splash-screen';

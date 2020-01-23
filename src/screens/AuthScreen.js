@@ -5,7 +5,7 @@ const AuthScreen = props => {
     return (
         <View>
             <Text>Auth Screen</Text>
-            <Button title="Go Home" onPress={() => props.navigation.replace('Home')} />
+            <Button title="Go Home" onPress={() => props.navigation.replace('Drawer')} />
         </View>
     );
 };
