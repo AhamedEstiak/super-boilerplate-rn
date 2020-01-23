@@ -7,8 +7,8 @@ const Drawer = props => {
     return (
         <SafeAreaProvider>
             <SafeAreaView forceInset={{top: 'always', horizontal: 'never'}}>
-                <DrawerItems {...props} />
                 <Text>Drawer</Text>
+                <DrawerItems {...props} />
             </SafeAreaView>
         </SafeAreaProvider>
     );

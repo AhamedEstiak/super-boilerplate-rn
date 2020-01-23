@@ -6,7 +6,7 @@ import SimpleLineIcon from 'react-native-vector-icons/SimpleLineIcons';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 import { HeaderButtons, Item} from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
-import {loadWeather} from '../store/actions/weatherActions';
+import {loadWeather} from '../store/actions/weather';
 import TestAnimation from '../components/TestAnimation';
 
 const HomeScreen = props => {

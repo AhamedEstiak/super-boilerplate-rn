@@ -8,6 +8,7 @@ import HomeScreen from '../screens/HomeScreen';
 import AuthScreen from '../screens/AuthScreen';
 import Colors from '../constants/Colors';
 import Drawer from '../screens/Drawer';
+import ListScreen from '../screens/ListScreen';
 
 const defaultNavOptions = {
     headerStyle: {
@@ -40,9 +41,19 @@ const HomeNavigator = createStackNavigator(
     }
 );
 
+const ListNavigator = createStackNavigator(
+    {
+        ListScreen: ListScreen,
+    },
+    {
+        defaultNavigationOptions: defaultNavOptions,
+    }
+);
+
 const DrawerNavigator = createDrawerNavigator(
     {
-        Home: HomeNavigator
+        List: ListNavigator,
+        Home: HomeNavigator,
     },
     {
         // drawerBackgroundColor: Colors.purple,
