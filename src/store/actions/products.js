@@ -3,7 +3,7 @@ import {faceListFilterUrl} from '../../constants/Urls';
 import {LOAD_PRODUCTS} from './actionTypes';
 import {startLoading, stopLoading} from './loading';
 
-export const loadProducts = (page, limit) => {
+export const fetchProducts = (page, limit) => {
     return async (dispatch, getState) => {
         // any async code you want!
         dispatch(startLoading());
@@ -24,7 +24,7 @@ export const loadProducts = (page, limit) => {
             });
             dispatch(stopLoading());
         } catch (err) {
-            console.log(err);
+            console.log('error in actions:::',err);
             dispatch(stopLoading());
             throw err;
         }
