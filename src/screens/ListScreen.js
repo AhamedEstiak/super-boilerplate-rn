@@ -1,6 +1,9 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import {View, Text, FlatList, Platform, StyleSheet, Button, ActivityIndicator } from 'react-native';
+import {
+    View, Text, FlatList, Platform, StyleSheet, Button, ActivityIndicator,
+    TouchableOpacity, ToastAndroid
+} from 'react-native';
 import {HeaderButtons, Item} from 'react-navigation-header-buttons';
 import HeaderButton from '../components/HeaderButton';
 import * as productsAction from '../store/actions/products';
@@ -14,30 +17,54 @@ class ListScreen extends Component {
         products: [],
         page: 1,
         limit: 10,
+        isLoading: false,
+        isLoadMore: false,
         isRefreshing: false,
+        listEnd: false,
         error: null,
     };
 
 
     loadProducts = async () => {
-        const {page } = this.state;
-        this.setState({isRefreshing: true, error: null});
+        const { page, isLoadMore } = this.state;
+
+        this.setState({ error: null, listEnd: false });
 
         try {
-            const fetchedPr = await this.props.dispatch(productsAction.fetchProducts(this.state.page, this.state.limit));
-            this.setState({
-                products: page === 1 ? fetchedPr : [...this.state.products, ...fetchedPr],
-            });
+            const fetchedProduct = await this.props.dispatch(productsAction.fetchProducts(this.state.page, this.state.limit));
+            console.log('fetchedProduct--',fetchedProduct.length);
+
+            if (fetchedProduct.length > 0) {
+                this.setState({
+                    products: page === 1 ? fetchedProduct : [...this.state.products, ...fetchedProduct],
+                });
+
+                // for showing loading from page number
+                if (isLoadMore) {
+                    ToastAndroid.show(`loading from page ${this.state.page}`, ToastAndroid.SHORT);
+                }
+            } else {
+                this.setState({ listEnd: true });
+                ToastAndroid.show('No more data found', ToastAndroid.SHORT);
+            }
         } catch (err) {
-            this.setState({error: err });
+            this.setState({error: err});
         }
-        this.setState({isRefreshing: false});
+
+        this.setState({
+            isRefreshing: false,
+            isLoading: false,
+            isLoadMore: false
+        });
     };
 
 
     componentDidMount() {
+        this.setState({ isLoading: true });
+
+        // it is a react navigation feature. when navigate from drawer every time calling otherwise not calling
         this.willFocusSub = this.props.navigation.addListener(
-            'willFocus', this.loadProducts
+            'willFocus', this.loadProducts,
         );
     }
 
@@ -47,21 +74,59 @@ class ListScreen extends Component {
 
     renderItem = ({item}) => <ListItem item={item}/>;
 
-    renderFooter = () => (
-        <View style={styles.footer}>
+    handleRefresh = () => {
+        this.setState(
+            {
+                page: 1,
+                isRefreshing: true,
+            },
+            () => this.loadProducts(),
+        );
+    };
 
-        </View>
-    );
-
+    // for pagination / infinite scrolling
     handleLoadMore = () => {
-        this.setState({
-            page: this.state.page + 1
-        }, () => this.loadProducts);
+        console.log('called load more');
+        this.setState(
+            {
+                page: this.state.page + 1,
+                isLoadMore: true,
+            },
+            () => this.loadProducts(),
+        );
+    };
+
+    renderFooter = () => {
+        if (this.state.isLoading) return null;
+
+        if (this.state.listEnd) {
+            return (
+                <View style={[styles.centered, { marginBottom: 10}]}>
+                    <Text>~ End of catalogue ~</Text>
+                </View>
+            );
+        }
+
+        return (
+            <View style={styles.centered}>
+                <TouchableOpacity
+                    activeOpacity={0.8}
+                    onPress={this.handleLoadMore}
+                    style={styles.loadMore}
+                >
+                    <Text style={{color: '#fff'}}>Load more...</Text>
+                    {this.state.isLoadMore ?
+                        <ActivityIndicator size="small" color='#fff' />
+                        : null
+                    }
+                </TouchableOpacity>
+
+            </View>
+        );
     };
 
     render() {
-        const { error, isRefreshing, products } = this.state;
-        const { isLoading, loadedProducts } = this.props;
+        const {error, isRefreshing, products, isLoading} = this.state;
 
         if (error) {
             return (
@@ -95,11 +160,12 @@ class ListScreen extends Component {
                 data={products}
                 keyExtractor={item => item.id}
                 renderItem={this.renderItem}
-                onRefresh={this.loadProducts}
+                onRefresh={this.handleRefresh}
                 refreshing={isRefreshing}
-                onEndReached={this.handleLoadMore}
+                // onEndReached={this.handleLoadMore} // if uncomment infinite scroll automatic when reach end
                 onEndReachedThreshold={0.5}
-                // ListFooterComponent={}
+                ListFooterComponent={this.renderFooter}
+                // ListEmptyComponent={this.renderListEmpty}
             />
         );
     }
@@ -127,17 +193,13 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center',
     },
-    footer: {
+    loadMore: {
+        flexDirection: 'row',
+        padding: 10,
+        backgroundColor: 'green',
         marginTop: 10,
-        alignItems: 'center'
-    }
+        marginBottom: 10,
+    },
 });
 
-const mapStateToProps = state => {
-    return {
-        isLoading: state.loading.isLoading,
-        loadedProducts: state.products.products,
-    };
-};
-
-export default connect(mapStateToProps)(ListScreen);
+export default connect(null)(ListScreen);
