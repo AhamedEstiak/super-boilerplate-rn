@@ -23,6 +23,7 @@ export const fetchProducts = (page, limit) => {
                 products: resData,
             });
             dispatch(stopLoading());
+            return resData;
         } catch (err) {
             console.log('error in actions:::',err);
             dispatch(stopLoading());
