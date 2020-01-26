@@ -58,13 +58,13 @@ class ListScreen extends Component {
         });
     };
 
-
     componentDidMount() {
-        this.setState({ isLoading: true });
-
         // it is a react navigation feature. when navigate from drawer every time calling otherwise not calling
         this.willFocusSub = this.props.navigation.addListener(
-            'willFocus', this.loadProducts,
+            'willFocus', () => this.setState(
+                { isLoading: true },
+                () => this.loadProducts()
+            ),
         );
     }
 
